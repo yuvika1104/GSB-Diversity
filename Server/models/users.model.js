@@ -1,10 +1,17 @@
 import bcrypt from "bcryptjs";
 import mongoose, { Schema } from "mongoose";
+import { v4 as uuidv4 } from "uuid";
+
 const userSchema = new Schema({
   user_id: {
     type: String,
-    required: true,
+    default: uuidv4, // Automatically generate a unique userId
+    unique: true, // Ensure it remains unique
+  },
+  email:{
+    type:String,
     unique: true,
+    required:true,
   },
   password: {
     type: String,
@@ -12,7 +19,7 @@ const userSchema = new Schema({
     unique: true,
     trim: true,
   },
-  type: {
+  role: {
     type: Number,
     required: true,
   },
@@ -23,6 +30,7 @@ const userSchema = new Schema({
     type: Date,
   },
 });
+
 
 userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);

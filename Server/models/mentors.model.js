@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const menteeSchema = new Schema(
+const mentorSchema = new Schema(
   {
     user_id: {
         type: String,
@@ -12,15 +12,17 @@ const menteeSchema = new Schema(
     },
     email: {
       type: String,
+      unique:true,
       required: true,
     },
-    mentee_name: {
+    mentor_name: {
       type: String,
       required: true,
     },
     role: {
       type: Number,
-      default: 0,
+      default: 1,
+      required:true,
     },
     skills:{
         type: [String],
@@ -37,4 +39,5 @@ const menteeSchema = new Schema(
   }
 );
 
-export const Mentee = mongoose.model("Mentee", menteeSchema);
+const Mentor = mongoose.model("Mentor", mentorSchema);
+export default Mentor;
