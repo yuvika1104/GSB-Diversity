@@ -9,12 +9,14 @@ import {
     verifyResetToken,
   } from "../utils/jwt.js";
 import { getAllMentors } from "../controllers/getAllMentors.js";
+import { ProfileData } from "../controllers/ProfileData.js";
 
 router.post("/signIn", Register);
 router.post("/logIn",login);
 router.post("/refresh-token", refreshAccessToken);
 router.get("/logout", logoutUser);
 router.post("/getAllMentors",getAllMentors);
+router.post("/getProfileData", ProfileData);
 
 
 
