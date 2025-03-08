@@ -1,6 +1,4 @@
 import bcrypt from "bcryptjs";
-import Mentor from "../models/mentors.model.js";
-import Mentee from "../models/mentees.model.js";
 import User from "../models/users.model.js";
 import jwt from "../utils/jwt.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
@@ -97,12 +95,12 @@ export const logoutUser = async (req, res) => {
       { $pull: { refresh_token: refreshToken } }
     );
 
-    if (!user) return res.status(403).json({ message: "User not found" });
+    if (!user) return res.status(400).json({ message: "User not found" });
 
     res.clearCookie("refreshToken");
     res.clearCookie("accessToken");
     return res.status(200).json({ message: "Logged out successfully" });
   } catch (err) {
-    return res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: `Server error: + ${err}` });
   }
 };
