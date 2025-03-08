@@ -1,19 +1,21 @@
 #root {
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0; /* Remove padding */
   text-align: center;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .app {
   width: 100%;
   margin: 0 auto;
-  padding: 6rem 2rem 2rem; 
+  padding: 0; /* Remove padding */
   text-align: center;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .content {
-  padding-top: 4rem; 
+  padding-top: 4rem; /* Add padding to top of content */
 }
 
 .logo {
